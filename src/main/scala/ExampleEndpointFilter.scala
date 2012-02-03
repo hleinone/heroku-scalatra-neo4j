@@ -7,9 +7,10 @@ import java.net.URI
 import org.neo4j.graphdb.RelationshipType
 import org.neo4j.graphdb.DynamicRelationshipType
 import collection.JavaConversions._
+import grizzled.slf4j.Logging
 
-class ExampleEndpointFilter extends ScalatraFilter with ScalateSupport {
-  println("DEVELOPMENT: " + isDevelopmentMode)
+class ExampleEndpointFilter extends ScalatraFilter with ScalateSupport with Logging {
+  debug("DEVELOPMENT: " + isDevelopmentMode)
   val gds: GraphDatabaseService =
     if (isDevelopmentMode)
       new RestGraphDatabase("http://localhost:7474/db/data")
@@ -26,9 +27,7 @@ class ExampleEndpointFilter extends ScalatraFilter with ScalateSupport {
 
   get("/") {
     val me = gds.getNodeById(0)
-    print(me)
     val rels = me.getRelationships(DynamicRelationshipType.withName("love"))
-    println(rels.size);
     val rel = rels.head
     val you = rel.getEndNode()
     contentType = "text/html"
