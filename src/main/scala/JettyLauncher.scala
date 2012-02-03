@@ -16,7 +16,6 @@ object JettyLauncher {
     context.addFilter(classOf[ExampleEndpointFilter], "/*", 0)
     context.addServlet(classOf[DefaultServlet], "/");
     context.setResourceBase("src/main/webapp")
-    context.setInitParameter("-Dorg.scalatra.environment", "production")
 
     server.start
     server.join
