@@ -8,7 +8,7 @@ import org.eclipse.jetty.servlet.{DefaultServlet, ServletContextHandler}
 
 object JettyLauncher {
   def main(args: Array[String]) {
-    System.setProperty("org.scalatra.environment", "heroku")
+    System.setProperty("run.mode", "production")
     val port = if(System.getenv("PORT") != null) System.getenv("PORT").toInt else 8080
 
     val server = new Server(port)

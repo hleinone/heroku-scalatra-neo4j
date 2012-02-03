@@ -1,22 +1,15 @@
 import java.net.URL
-
 import scala.collection.JavaConversions.iterableAsScalaIterable
-
 import org.neo4j.graphdb.DynamicRelationshipType
 import org.neo4j.graphdb.GraphDatabaseService
 import org.neo4j.rest.graphdb.RestGraphDatabase
 import org.scalatra.scalate.ScalateSupport
 import org.scalatra.ScalatraFilter
-
 import grizzled.slf4j.Logging
+import net.liftweb.util.Props
 
 class ExampleEndpointFilter extends ScalatraFilter with ScalateSupport with Logging {
-  debug("DEVELOPMENT: " + isDevelopmentMode + " environment: " + System.getProperty("org.scalatra.environment"))
-  val gds: GraphDatabaseService =
-    if (isDevelopmentMode)
-      new RestGraphDatabase("http://localhost:7474/db/data")
-    else
-      new RestGraphDatabase("http://749dda205:e272997de@d4b0f9790.hosted.neo4j.org:7027/db/data/", "749dda205", "e272997de")
+  val gds: GraphDatabaseService = new RestGraphDatabase(Props.get("neo4j.url").openTheBox, Props.get("neo4j.login").openOr(null), Props.get("neo4j.password").openOr(null))
 
   val me = gds.getReferenceNode()
   if (!me.hasProperty("name")) {

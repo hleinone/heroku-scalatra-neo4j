@@ -17,6 +17,7 @@ libraryDependencies ++= Seq(
   "org.clapper" %% "grizzled-slf4j" % "0.6.6",
   "ch.qos.logback" % "logback-classic" % "0.9.30",
   "org.neo4j" % "neo4j-rest-graphdb" % "1.6",
+  "net.liftweb" %% "lift-util" % "2.4",
   "org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725" % "container",
   "org.eclipse.jetty" % "jetty-webapp" % "7.4.5.v20110725",
   "javax.servlet" % "servlet-api" % "2.5" % "provided->default"
