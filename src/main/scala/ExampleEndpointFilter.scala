@@ -9,6 +9,7 @@ import org.neo4j.graphdb.DynamicRelationshipType
 import collection.JavaConversions._
 
 class ExampleEndpointFilter extends ScalatraFilter with ScalateSupport {
+  println("DEVELOPMENT: " + isDevelopmentMode)
   val gds: GraphDatabaseService =
     if (isDevelopmentMode)
       new RestGraphDatabase("http://localhost:7474/db/data")
