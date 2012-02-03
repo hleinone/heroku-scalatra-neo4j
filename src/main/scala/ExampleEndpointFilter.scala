@@ -1,16 +1,17 @@
-import org.scalatra.ScalatraFilter
-import org.scalatra.scalate.ScalateSupport
 import java.net.URL
+
+import scala.collection.JavaConversions.iterableAsScalaIterable
+
+import org.neo4j.graphdb.DynamicRelationshipType
 import org.neo4j.graphdb.GraphDatabaseService
 import org.neo4j.rest.graphdb.RestGraphDatabase
-import java.net.URI
-import org.neo4j.graphdb.RelationshipType
-import org.neo4j.graphdb.DynamicRelationshipType
-import collection.JavaConversions._
+import org.scalatra.scalate.ScalateSupport
+import org.scalatra.ScalatraFilter
+
 import grizzled.slf4j.Logging
 
 class ExampleEndpointFilter extends ScalatraFilter with ScalateSupport with Logging {
-  debug("DEVELOPMENT: " + isDevelopmentMode)
+  debug("DEVELOPMENT: " + isDevelopmentMode + " environment: " + System.getenv("org.scalatra.environment"))
   val gds: GraphDatabaseService =
     if (isDevelopmentMode)
       new RestGraphDatabase("http://localhost:7474/db/data")
