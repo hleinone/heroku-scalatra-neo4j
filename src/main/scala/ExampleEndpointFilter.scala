@@ -11,7 +11,7 @@ import org.scalatra.ScalatraFilter
 import grizzled.slf4j.Logging
 
 class ExampleEndpointFilter extends ScalatraFilter with ScalateSupport with Logging {
-  debug("DEVELOPMENT: " + isDevelopmentMode + " environment: " + System.getenv("org.scalatra.environment"))
+  debug("DEVELOPMENT: " + isDevelopmentMode + " environment: " + System.getProperty("org.scalatra.environment"))
   val gds: GraphDatabaseService =
     if (isDevelopmentMode)
       new RestGraphDatabase("http://localhost:7474/db/data")
