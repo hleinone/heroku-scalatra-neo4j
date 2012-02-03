@@ -1,4 +1,4 @@
 #
-neo4jUrl=http://749dda205:e272997de@d4b0f9790.hosted.neo4j.org:7027/db/data/
-neo4jLogin=749dda205
-neo4jPassword=e272997de
+neo4j.url=http://749dda205:e272997de@d4b0f9790.hosted.neo4j.org:7027/db/data/
+neo4j.login=749dda205
+neo4j.password=e272997de
